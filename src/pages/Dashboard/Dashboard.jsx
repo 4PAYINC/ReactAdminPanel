@@ -1,10 +1,12 @@
 import React from "react";
 import "./Dashboard.scss";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const Home = () => {
   return (
     <div className="home">
-      <h1 className="title">Hello</h1>
+      <Sidebar />
+      <div className="dashboardContainer"> YO</div>
     </div>
   );
 };

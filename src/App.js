@@ -17,7 +17,7 @@ function App() {
         </Route>
         <Route path="/products">
           <Route index element={<List />} />
-          <Route path=":userID" element={<Single />} />
+          <Route path=":producctID" element={<Single />} />
           <Route path="new" element={<New />} />
         </Route>
       </Routes>
