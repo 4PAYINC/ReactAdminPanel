@@ -99,7 +99,7 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-      <div className="bottomsidebar">Dark Mode</div>
+      {/* <div className="bottomsidebar">Dark Mode</div> */}
     </div>
   );
 };
