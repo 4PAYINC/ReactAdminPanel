@@ -43,10 +43,13 @@ const Sidebar = () => {
           </Link>
         </ul>
         <ul>
+        <Link to="/users" style={{ textDecoration: "none" }}>
+
           <li>
             <AccountCircleIcon className="icon" />
             <span>CRM</span>
           </li>
+          </Link>
         </ul>
         <ul>
           <li>

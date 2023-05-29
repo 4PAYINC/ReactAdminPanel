@@ -13,27 +13,27 @@ const Chart = () => {
   const data = [
     {
       name: "January",
-      amt: 2400,
+      amount: 2400,
     },
     {
       name: "February",
-      amt: 2210,
+      amount: 2210,
     },
     {
       name: "March",
-      amt: 2290,
+      amount: 2290,
     },
     {
       name: "April",
-      amt: 2000,
+      amount: 2000,
     },
     {
       name: "May",
-      amt: 2181,
+      amount: 2181,
     },
     {
       name: "June",
-      amt: 2500,
+      amount: 2500,
     },
   ];
   return (
@@ -48,8 +48,8 @@ const Chart = () => {
         >
           <defs>
             <linearGradient id="totalChart" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              <stop offset="5%" stopColor="#EFA939" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#EFA939" stopOpacity={0} />
             </linearGradient>
           </defs>
           <XAxis dataKey="name" />
@@ -58,8 +58,8 @@ const Chart = () => {
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="amt"
-            stroke="#8884d8"
+            dataKey="amount"
+            stroke="#EFA939"
             fillOpacity={1}
             fill="url(#totalChart)"
           />

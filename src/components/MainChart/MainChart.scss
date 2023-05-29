@@ -6,7 +6,7 @@
         display:flex;
         align-items: center;
         justify-content: space-between;
-        color: gray;
+        color: #343D3A;
         padding: 20px;
 
         .title{
@@ -29,7 +29,7 @@
 
         .title{
             font-weight: 500;
-            color:gray
+            color:#343D3A
         }
         .amount{
             font-size: 26px;
@@ -38,7 +38,7 @@
         .desc{
             font-weight: 300;
             font-size: 12px;
-            color:gray;
+            color:#343D3A;
             text-align: center;
         }
 
@@ -53,7 +53,7 @@
         }
         .revenueTitle{
             font-size: 14px;
-            color: gray;
+            color: #343D3A;
         }
         .revenueResult{
             display:flex;
