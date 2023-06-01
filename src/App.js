@@ -11,6 +11,7 @@ import { store } from "./store/redux/store";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { AuthProvider } from "./store/context/auth";
+import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
 
 function App() {
   const [hide, setHide] = useState(false);
@@ -34,7 +35,14 @@ function App() {
               <Routes>
                 <Route path="/" element={<Login />} />
 
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <RequiredAuth>
+                      <Dashboard />
+                    </RequiredAuth>
+                  }
+                />
                 <Route path="/login" element={<Login />} />
                 <Route path="/users">
                   <Route index element={<List />} />

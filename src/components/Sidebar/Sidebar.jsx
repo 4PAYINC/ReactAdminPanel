@@ -12,8 +12,17 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
+import { AuthProvider, useAuth } from "../../store/context/auth";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar({ hide }) {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  function handleLogOut() {
+    auth.logout();
+    navigate("/");
+  }
   return (
     <div className={`${hide ? "hide" : "sidebar"}`}>
       <div className="topsidebar">
@@ -94,7 +103,7 @@ function Sidebar({ hide }) {
             <span>Help Centre</span>
           </li>
         </ul>
-        <ul>
+        <ul onClick={handleLogOut}>
           <li>
             <LogoutIcon className="icon" />
             <span>Logout</span>
