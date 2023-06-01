@@ -7,37 +7,36 @@ import Tables from "../../components/Tables/Tables";
 // import { getUsers, callDeviceAuditApi } from "../../util/http";
 const Home = () => {
   async function callDeviceAuditApi() {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Cookie", "PHPSESSID=98ciqlc3qf1ptujppsqk58hgtm");
+
     var raw = JSON.stringify({
-      location: "",
-      franchiseeid: "117",
-      firstname: "",
-      lastname: "",
-      phoneno: "",
-      cityname: "",
-      stateid: "",
-      countryid: "",
-      other1: "",
-      other2: "",
-      other3: "",
-      usertype: "0",
-      startuserid: "0",
-      limit: "0",
+      svc: "app_2003",
+      pid: "ListCustomerByPrograms",
+      dat: {
+        location: "",
+        franchiseeid: "117",
+        firstname: "",
+        lastname: "",
+        phoneno: "",
+        cityname: "",
+        stateid: "",
+        countryid: "",
+        other1: "",
+        other2: "",
+        other3: "",
+        usertype: "0",
+        startuserid: "0",
+        limit: "0",
+      },
     });
 
-    var myHeaders = new Headers();
-    myHeaders.append("Cookie", "PHPSESSID=rvrlpdaj6v419pl7op1p8j1o0t");
-
-    var formdata = new FormData();
-    formdata.append("svc", "app_2003");
-    formdata.append("pid", "ListCustomerByPrograms");
-    formdata.append("dat", raw);
-
     var requestOptions = {
-      retries: 10,
-      retryDelay: 10000,
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
-      body: formdata,
+      headers: myHeaders,
+      body: raw,
+      redirect: "manual",
     };
 
     fetch(
@@ -49,7 +48,7 @@ const Home = () => {
       .catch((error) => console.log("error", error));
   }
 
-  // callDeviceAuditApi()
+  callDeviceAuditApi();
   return (
     <>
       <div className="home">
