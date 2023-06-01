@@ -6,9 +6,9 @@ import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNone
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import "./Navbar.scss";
 
-const Navbar = () => {
+function Navbar({ hide }) {
   return (
-    <div className="navbar">
+    <div className={`${hide ? "hide" : "navbar"}`}>
       <div className="wrapper">
         <div className="search">
           <input type="text" placeholder="Search" />
@@ -40,6 +40,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Navbar;

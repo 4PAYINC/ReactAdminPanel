@@ -13,11 +13,11 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+function Sidebar({ hide }) {
   return (
-    <div className="sidebar">
+    <div className={`${hide ? "hide" : "sidebar"}`}>
       <div className="topsidebar">
-        <Link to="/">
+        <Link to="/dashboard">
           <img src={logo} />
         </Link>
         {/* <span className="logo">MoPhones</span> */}
@@ -43,12 +43,11 @@ const Sidebar = () => {
           </Link>
         </ul>
         <ul>
-        <Link to="/users" style={{ textDecoration: "none" }}>
-
-          <li>
-            <AccountCircleIcon className="icon" />
-            <span>CRM</span>
-          </li>
+          <Link to="/users" style={{ textDecoration: "none" }}>
+            <li>
+              <AccountCircleIcon className="icon" />
+              <span>CRM</span>
+            </li>
           </Link>
         </ul>
         <ul>
@@ -105,6 +104,6 @@ const Sidebar = () => {
       {/* <div className="bottomsidebar">Dark Mode</div> */}
     </div>
   );
-};
+}
 
 export default Sidebar;

@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const Chart = () => {
+function Chart() {
   const data = [
     {
       name: "January",
@@ -67,6 +67,6 @@ const Chart = () => {
       </ResponsiveContainer>
     </div>
   );
-};
+}
 
 export default Chart;

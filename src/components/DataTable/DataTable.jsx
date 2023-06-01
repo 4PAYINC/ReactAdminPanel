@@ -43,7 +43,7 @@ const rows = [
   { id: 90, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-const DataTable = () => {
+function DataTable() {
   return (
     <div className="datatable">
       <DataGrid
@@ -59,6 +59,6 @@ const DataTable = () => {
       />
     </div>
   );
-};
+}
 
 export default DataTable;
