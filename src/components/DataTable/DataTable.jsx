@@ -1,5 +1,6 @@
 import "./DataTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
+import { useEffect } from "react";
 
 const columns = [
   { field: "id", headerName: "ID", width: 120 },

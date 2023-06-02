@@ -9,12 +9,24 @@ import Navbar from "./components/Navbar/Navbar";
 import { Provider } from "react-redux";
 import { store } from "./store/redux/store";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AuthProvider } from "./store/context/auth";
 import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
+import { useIdleTimer } from "react-idle-timer";
+import { useAuth } from "./store/context/auth";
 
 function App() {
   const [hide, setHide] = useState(false);
+  const auth = useAuth();
+
+  useIdleTimer({
+    timeout: 1000 * 60 * 20,
+    onIdle: () => {
+      auth.logout();
+      // console.log("idle");
+    },
+  });
+
   let path = useLocation();
   useEffect(() => {
     if (path.pathname === "/" || path.pathname === "/signup") {
@@ -27,37 +39,49 @@ function App() {
   return (
     <div className="App">
       <div className="home">
-        <AuthProvider>
-          <Provider store={store}>
-            <Sidebar hide={hide} />
-            <div className="dashboardContainer">
-              <Navbar hide={hide} />
-              <Routes>
-                <Route path="/" element={<Login />} />
+        <Provider store={store}>
+          <Sidebar hide={hide} />
+          <div className="dashboardContainer">
+            <Navbar hide={hide} />
+            <Routes>
+              <Route path="/" element={<Login />} />
 
+              <Route
+                path="/dashboard"
+                element={
+                  <RequiredAuth>
+                    <Dashboard />
+                  </RequiredAuth>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/users">
                 <Route
-                  path="/dashboard"
+                  index
                   element={
                     <RequiredAuth>
-                      <Dashboard />
+                      <List />
                     </RequiredAuth>
                   }
                 />
-                <Route path="/login" element={<Login />} />
-                <Route path="/users">
-                  <Route index element={<List />} />
-                  <Route path=":userID" element={<Single />} />
-                  <Route path="new" element={<New />} />
-                </Route>
-                <Route path="/phones">
-                  <Route index element={<List />} />
-                  <Route path=":phoneID" element={<Single />} />
-                  <Route path="new" element={<New />} />
-                </Route>
-              </Routes>
-            </div>
-          </Provider>
-        </AuthProvider>
+                <Route
+                  path=":userID"
+                  element={
+                    <RequiredAuth>
+                      <Single />
+                    </RequiredAuth>
+                  }
+                />
+                <Route path="new" element={<New />} />
+              </Route>
+              <Route path="/phones">
+                <Route index element={<List />} />
+                <Route path=":phoneID" element={<Single />} />
+                <Route path="new" element={<New />} />
+              </Route>
+            </Routes>
+          </div>
+        </Provider>
       </div>
     </div>
   );

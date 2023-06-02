@@ -21,6 +21,7 @@ function Sidebar({ hide }) {
 
   function handleLogOut() {
     auth.logout();
+    localStorage.clear();
     navigate("/");
   }
   return (
